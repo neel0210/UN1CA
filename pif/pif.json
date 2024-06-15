@@ -1,0 +1,14 @@
+{
+  "VERSION": "20241112",
+  "PRODUCT": "shiba_beta",
+  "DEVICE": "shiba",
+  "MANUFACTURER": "Google",
+  "BRAND": "google",
+  "MODEL": "Pixel 8",
+  "RELEASE": "null",
+  "INCREMENTAL": "null",
+  "ID": "null",
+  "FINGERPRINT": "google/shiba_beta/shiba:15/BP11.241025.006/12620009:user/release-keys",
+  "SECURITY_PATCH": "null",
+  "DEVICE_INITIAL_SDK_INT": "null"
+}
