@@ -111,15 +111,8 @@ else
     echo -e "- Nothing to do in work dir.\n"
 fi
 
-if $BUILD_ZIP; then
-    echo "- Building ROM zip..."
-    bash "$SRC_DIR/scripts/internal/build_flashable_zip.sh"
-    echo ""
-elif $BUILD_TAR; then
-    echo "- Building ROM tar..."
-    bash "$SRC_DIR/scripts/internal/build_odin_package.sh"
-    echo ""
-fi
+echo "- Building ROM tar..."
+bash "$SRC_DIR/scripts/internal/build_odin_package.sh"
 
 ESTIMATED=$((SECONDS-START))
 echo "Build completed in $((ESTIMATED / 3600))hrs $(((ESTIMATED / 60) % 60))min $((ESTIMATED % 60))sec."
