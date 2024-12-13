@@ -93,8 +93,6 @@ if [ -d "$FW_DIR/$TARGET_FIRMWARE_PATH/system/system/cameradata" ]; then
     [ -f "$i" ] && echo "$FILE 0 0 644 capabilities=0x0" >> "$WORK_DIR/configs/fs_config-system"
     FILE="$(echo -n "$FILE" | sed 's/\./\\./g')"
     echo "/$FILE u:object_r:system_file:s0" >> "$WORK_DIR/configs/file_context-system"
-else
-    echo "cameradata directory not found in the Firmware, skipping...."
 fi
 
 if [ -f "$FW_DIR/$TARGET_FIRMWARE_PATH/system/system/usr/share/alsa/alsa.conf" ]; then
