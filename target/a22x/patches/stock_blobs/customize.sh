@@ -207,10 +207,6 @@ if ! grep -q "moire_detection" "$WORK_DIR/configs/fs_config-vendor"; then
         echo "vendor/etc/VslMesDetector/moire_detection.tflite 0 0 644 capabilities=0x0"
     } >> "$WORK_DIR/configs/fs_config-vendor"
 fi
-echo "Fix MIDAS model detection"
-sed -i "s/ro.product.device/ro.product.vendor.device/g" "$WORK_DIR/vendor/etc/midas/midas_config.json"
-echo "Fix RIL"
-sed -i "s/1.4::IRadio/1.5::IRadio/g" "$WORK_DIR/vendor/etc/vintf/manifest.xml"
 
 echo "Add stock /odm/etc/permissions"
 ADD_TO_WORK_DIR "odm" "etc/permissions" 0 0 755 "u:object_r:vendor_configs_file:s0"
@@ -293,27 +289,3 @@ if ! grep -q "manifest_hce" "$WORK_DIR/configs/fs_config-odm"; then
         echo "odm/etc/vintf/manifest_hce.xml 0 0 644 capabilities=0x0"
     } >> "$WORK_DIR/configs/fs_config-odm"
 fi
-
-echo "Add stock /odm/etc/media_profiles_V1_0.xml"
-ADD_TO_WORK_DIR "odm" "etc/media_profiles_V1_0.xml" 0 0 644 "u:object_r:vendor_configs_file:s0"
-
-echo "Add stock rscmgr.rc"
-ADD_TO_WORK_DIR "system" "system/etc/init/rscmgr.rc" 0 0 644 "u:object_r:system_file:s0"
-
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.samsung.feature.audio_fast_listenback.xml"
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.samsung.feature.audio_listenback.xml"
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.cover.clearcameraviewcover.xml"
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.cover.flip.xml"
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.nsflp_level_601.xml"
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.pocketsensitivitymode_level1.xml"
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.sensorhub_level29.xml"
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.sec.feature.wirelesscharger_authentication.xml"
-echo "Add stock system features"
-ADD_TO_WORK_DIR "system" "system/etc/permissions/com.sec.feature.cover.minisviewwalletcover.xml" 0 0 644 "u:object_r:system_file:s0"
-ADD_TO_WORK_DIR "system" "system/etc/permissions/com.sec.feature.nsflp_level_600.xml" 0 0 644 "u:object_r:system_file:s0"
-ADD_TO_WORK_DIR "system" "system/etc/permissions/com.sec.feature.pocketmode_level6.xml" 0 0 644 "u:object_r:system_file:s0"
-ADD_TO_WORK_DIR "system" "system/etc/permissions/com.sec.feature.sensorhub_level34.xml" 0 0 644 "u:object_r:system_file:s0"
-
-echo "Add stock NFC libs"
-ADD_TO_WORK_DIR "system" "system/lib64/vendor.nxp.nxpnfc@1.0.so" 0 0 644 "u:object_r:system_lib_file:s0"
-ADD_TO_WORK_DIR "system" "system/lib64/vendor.nxp.nxpnfc@1.1.so" 0 0 644 "u:object_r:system_lib_file:s0"
