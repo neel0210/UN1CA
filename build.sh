@@ -89,7 +89,7 @@ function extract_stock_fw() {
 function build_rom() {
   echo ">>> Building ROM for target: $TARGET"
   source ./buildenv.sh "$TARGET"
-  ./scripts/make_rom.sh --no-rom-zip # --no-rom-tar
+  ./scripts/make_rom.sh
 }
 
 # Main Execution
