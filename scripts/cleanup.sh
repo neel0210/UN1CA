@@ -73,16 +73,6 @@ if $ALL; then
     exit 0
 fi
 
-if $ODIN; then
-    echo "- Cleaning Odin firmwares dir..."
-    rm -rf "$ODIN_DIR"
-fi
-
-if $FW; then
-    echo "- Cleaning extracted firmwares dir..."
-    rm -rf "$FW_DIR"
-fi
-
 if $APKTOOL; then
     echo "- Cleaning decompiled apks/jars dir..."
     rm -rf "$APKTOOL_DIR"
